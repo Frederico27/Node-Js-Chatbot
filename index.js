@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = '6756839108:AAHK95aICHaEuXmCILBnomfnhBSrT3fxIBU'; // Replace with your own bot token
+const token = process.env.TELEGRAM_KEY; // Replace with your own bot token
 const bot = new TelegramBot(token, {
     polling: true
 });
@@ -138,8 +140,13 @@ ${'https://cdn.britannica.com/33/61833-050-302C6C05/East-Timor.jpg'}
             const weatherInfo = parseDataAndReturn(jsonData);
             return bot.sendMessage(chatId, weatherInfo);
         } catch (error) {
-            console.error('Error fetching weather data:', error);
-            return bot.sendMessage(chatId, "Komesa Chatbot ho ketik '/start'");
+            if (error.response && error.response.status === 400) {
+                console.error('Error fetching weather data:', error);
+                return bot.sendMessage(chatId, "Dadus la existe halo favor hanehan '/start' ou hakerek naran munisipiu ho los");
+            } else {
+                console.error('Error fetching weather data:', error);
+                return bot.sendMessage(chatId, "Komesa Chatbot ho ketik '/start'");
+            }
         }
     }
 });
