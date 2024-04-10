@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 
     const TelegramBot = require('node-telegram-bot-api');
 
-    const token = process.env.TELEGRAM_KEY; // Replace with your own bot token
+    const token = "6756839108:AAHK95aICHaEuXmCILBnomfnhBSrT3fxIBU"; // Replace with your own bot token
     const bot = new TelegramBot(token, {
         polling: true
     });
