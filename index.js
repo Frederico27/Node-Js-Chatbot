@@ -127,20 +127,20 @@ Halo Favor Hatama Munisipiu nia naran hodi asessu kondisaun klima atual:
                     return `
 Kondisaun Klima Atual
 =============================================
-Munisipiu: ${munisipiu.replace(/^\w/, (c) => c.toUpperCase())}
-Tempu: ${tempu}
-Temperatura: ${temperatura_2m}
-Kondisaun Klima:  ${parseDataKlima(kodigu_klima)}
-Umidade: ${umidade_2m}
-Presipitasaun: ${presipitasaun}
-Udan: ${udan}
-Kalohan Taka: ${kalohan_taka}
-Presaun Tasi: ${presaun_tasi}
-Presaun Rai: ${presaun_rai}
-Velosidade Anin 10m: ${velosidade_anin_10m}
-Nasaun: Timor-Leste 
+Munisipiu: **${munisipiu.replace(/^\w/, (c) => c.toUpperCase())}**
+Tempu: **${tempu}**
+Temperatura: **${temperatura_2m}**
+Kondisaun Klima: **${parseDataKlima(kodigu_klima)}**
+Umidade: **${umidade_2m}**
+Presipitasaun: **${presipitasaun}**
+Udan: **${udan}**
+Kalohan Taka: **${kalohan_taka}**
+Presaun Tasi: **${presaun_tasi}**
+Presaun Rai: **${presaun_rai}**
+Velosidade Anin 10m: **${velosidade_anin_10m}**
+Nasaun: **Timor-Leste**
 ${'https://cdn.britannica.com/33/61833-050-302C6C05/East-Timor.jpg'}
-            `.trim();
+`.trim();
                 }
 
                 const weatherInfo = parseDataAndReturn(jsonData);
