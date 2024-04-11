@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 
+
+server.keepAliveTimeout = 30 * 24 * 60 * 60 * 1000; // 30 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
+server.headersTimeout = 30 * 24 * 60 * 60 * 1000; // 30 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
+
+
+
 app.get('/', (req, res) => {
 
     res.send('Server Works!');
@@ -161,8 +167,3 @@ ${'https://cdn.britannica.com/33/61833-050-302C6C05/East-Timor.jpg'}
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
-
-setInterval(() => {
-    const axios = require('axios');
-    axios.get('/'); // Replace 'http://localhost:3000/' with your actual endpoint
-}, 180000); // 60000 milliseconds = 1 minute
