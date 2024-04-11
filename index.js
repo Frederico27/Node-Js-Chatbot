@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 
     const TelegramBot = require('node-telegram-bot-api');
 
-    const token = "6756839108:AAHK95aICHaEuXmCILBnomfnhBSrT3fxIBU"; // Replace with your own bot token
+    const token = process.env.TELEGRAM_KEY; // Replace with your own bot token
     const bot = new TelegramBot(token, {
         polling: true
     });
@@ -158,6 +158,6 @@ ${'https://cdn.britannica.com/33/61833-050-302C6C05/East-Timor.jpg'}
     });
 });
 
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
