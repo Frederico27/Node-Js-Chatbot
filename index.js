@@ -1,11 +1,6 @@
 const express = require('express');
 const app = express();
-
-
-server.keepAliveTimeout = 30 * 24 * 60 * 60 * 1000; // 30 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
-server.headersTimeout = 30 * 24 * 60 * 60 * 1000; // 30 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
-
-
+const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
 
@@ -19,9 +14,11 @@ app.get('/', (req, res) => {
         polling: true
     });
 
+    msg = "";
+
     bot.on('message', (msg) => {
         const chatId = msg.chat.id;
-        const messageText = msg.text;
+        const messageText = msg.text || "";
 
         if (messageText === '/start') {
             // Display menu options when user starts the bot
@@ -153,10 +150,8 @@ ${'https://cdn.britannica.com/33/61833-050-302C6C05/East-Timor.jpg'}
                 return bot.sendMessage(chatId, weatherInfo);
             } catch (error) {
                 if (error.response && error.response.status === 400) {
-                    console.error('Error fetching weather data:', error);
                     return bot.sendMessage(chatId, "Dadus la existe halo favor hanehan '/start' ou hakerek naran munisipiu ho los");
                 } else {
-                    console.error('Error fetching weather data:', error);
                     return bot.sendMessage(chatId, "Komesa Chatbot ho ketik '/start'");
                 }
             }
@@ -164,6 +159,8 @@ ${'https://cdn.britannica.com/33/61833-050-302C6C05/East-Timor.jpg'}
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+server.keepAliveTimeout = 2147483647; // 30 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
+server.headersTimeout = 2147483647; // 30 days * 24 hours * 60 minutes * 60 seconds * 1000 
